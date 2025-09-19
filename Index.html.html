@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Schooling - Sikkim Vidyarthi Education Consultancy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #34b3a1;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2a9d8a;
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* What is Open Schooling */
+        .about-open-schooling {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Boards Section */
+        .boards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+        
+        .board-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .board-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .board-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .board-content {
+            padding: 25px;
+        }
+        
+        .board-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .board-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .board-content li {
+            margin-bottom: 10px;
+        }
+        
+        /* Programs Section */
+        .programs {
+            background-color: var(--light);
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            padding: 30px 20px;
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Support Section */
+        .support-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .support-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .support-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .support-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .support-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Why Choose Us */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Enquiry Form */
+        .enquiry {
+            background-color: var(--light);
+        }
+        
+        .enquiry-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+        }
+        
+        .enquiry-container h3 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                flex: none;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                transition: 0.4s;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .boards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWE0YjhjIiAvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSI+U1ZFUzwvdGV4dD48L3N2Zz4=" alt="Sikkim Vidyarthi Logo">
+                <span class="logo-text">Sikkim Vidyarthi</span>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#courses">Courses</a></li>
+                    <li><a href="index.html#destinations">Study Abroad</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+            
+            <a href="#enquiry" class="btn btn-primary">Apply Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Open Schooling (X & XII) – Flexible Learning for All</h1>
+            <p>Admissions through BOSSE & NIOS for Class 10th & 12th in Sikkim and across India</p>
+            <div class="cta-buttons">
+                <a href="#enquiry" class="btn btn-primary">Apply Now for Admission</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Open Schooling Section -->
+    <section class="about-open-schooling">
+        <div class="container">
+            <div class="section-title">
+                <h2>What is Open Schooling?</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Open Schooling is a flexible learning system designed for school dropouts, working professionals, and students who need an alternative to traditional schooling. With BOSSE (Sikkim) and NIOS (National Board), students can complete their Secondary (Class X) or Senior Secondary (Class XII) education without the pressure of regular school.</p>
+                    
+                    <p>This system is ideal for:</p>
+                    <ul>
+                        <li>Students who had to leave formal education</li>
+                        <li>Working professionals who want to complete their education</li>
+                        <li>Students pursuing sports or arts who need flexible timing</li>
+                        <li>Those who need a second chance to improve their scores</li>
+                        <li>Learners in remote areas with limited access to schools</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Open Schooling">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boards We Offer Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Boards We Offer</h2>
+            </div>
+            
+            <div class="boards-grid">
+                <div class="board-card">
+                    <div class="board-header">
+                        <h2>BOSSE</h2>
+                        <p>Board of Open Schooling & Skill Education, Sikkim</p>
+                    </div>
+                    <div class="board-content">
+                        <h3>State open board based in Sikkim</h3>
+                        <p>BOSSE is a recognized open schooling board that provides flexible education opportunities to students across Sikkim and India.</p>
+                        
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Recognised for Class X & XII education</li>
+                            <li>Offers flexible exam schedules</li>
+                            <li>Skill-based learning integrated with academics</li>
+                            <li>Ideal for students in Sikkim and neighboring regions</li>
+                            <li>Affordable fee structure</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="board-card">
+                    <div class="board-header">
+                        <h2>NIOS</h2>
+                        <p>National Institute of Open Schooling</p>
+                    </div>
+                    <div class="board-content">
+                        <h3>India's largest open school under Govt. of India</h3>
+                        <p>NIOS is a national board that provides quality education through open and distance learning模式.</p>
+                        
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Secondary (10th) & Senior Secondary (12th) programs</li>
+                            <li>Wide range of subject choices</li>
+                            <li>Comprehensive online study materials</li>
+                            <li>Nationwide recognition and acceptance</li>
+                            <li>Flexible examination system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Available Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Programs Available</h2>
+            </div>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Secondary (Class X)</h3>
+                    <p>For students who couldn't complete school or want to upgrade their qualification. This program provides a recognized Class X certificate equivalent to any other education board.</p>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Senior Secondary (Class XII)</h3>
+                    <p>For students aiming for higher studies, jobs, or competitive exams. Complete your Class XII education with flexible learning options and choose from various streams.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Support Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Admission Support We Provide</h2>
+            </div>
+            
+            <div class="support-list">
+                <div class="support-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Board Selection Guidance</h3>
+                    <p>Expert advice on choosing the right board (BOSSE or NIOS) based on your needs and goals.</p>
+                </div>
+                
+                <div class="support-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Admission Form Assistance</h3>
+                    <p>Complete help with filling out admission forms correctly to avoid rejection.</p>
+                </div>
+                
+                <div class="support-item">
+                    <i class="fas fa-file-upload"></i>
+                    <h3>Document Support</h3>
+                    <p>Guidance on document submission and verification process.</p>
+                </div>
+                
+                <div class="support-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Exam Updates</h3>
+                    <p>Regular updates on exam schedules, admit cards, and results.</p>
+                </div>
+                
+                <div class="support-item">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Future Counselling</h3>
+                    <p>Guidance for next steps after completion - college or professional courses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Sikkim Vidyarthi Section -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Sikkim Vidyarthi?</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Official Guidance</h3>
+                    <p>We are an authorized consultant for both BOSSE & NIOS admissions.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Local Presence</h3>
+                    <p>Conveniently located office in Namchi, Sikkim for easy access.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>End-to-End Support</h3>
+                    <p>Complete admission process support from start to finish.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-road"></i>
+                    <h3>Career Guidance</h3>
+                    <p>Counselling for future career path based on your qualifications.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Trusted Service</h3>
+                    <p>Transparent processes with no hidden costs or surprises.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enquiry Form Section -->
+    <section class="enquiry" id="enquiry">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enroll in Open Schooling</h2>
+            </div>
+            
+            <div class="enquiry-container">
+                <h3>Want to enrol in Open Schooling?</h3>
+                <p style="text-align: center; margin-bottom: 30px;">Fill out the enquiry form below and our counsellor will contact you.</p>
+                
+                <form id="openSchoolingForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Your Email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="class">Class Applying For</label>
+                            <select id="class" required>
+                                <option value="" disabled selected>Select Class</option>
+                                <option value="x">Class X (Secondary)</option>
+                                <option value="xii">Class XII (Senior Secondary)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" placeholder="Any specific questions or requirements"></textarea>
+                    </div>
+                    
+                    <div class="submit-btn">
+                        <button type="submit" class="btn btn-primary">Get Admission Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Sikkim Vidyarthi</h4>
+                    <p>Your trusted education consultancy partner in Namchi, Sikkim providing comprehensive educational solutions and guidance.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="open-schooling.html">Open Schooling</a></li>
+                        <li><a href="index.html#services">Distance Education</a></li>
+                        <li><a href="index.html#services">Regular Degrees</a></li>
+                        <li><a href="index.html#services">Teacher Training</a></li>
+                        <li><a href="index.html#services">Study Abroad</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Namchi, Sikkim</li>
+                        <li><i class="fas fa-phone"></i> +91-XXXXXXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@sikkimvidyarthi.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sikkim Vidyarthi Education Consultancy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('openSchoolingForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your enquiry! Our counsellor will contact you shortly.');
+                this.reset();
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
